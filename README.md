@@ -20,6 +20,6 @@ $$ \frac{\partial L}{\partial \alpha} = -2sin(kxy) * [f(x,y) - asin(kxy) - bcos(
 
 $$ \frac{\partial L}{\partial \beta} = -2cos(hy) * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
-$$ \frac{\partial L}{\partial \k} = -2 * axy * [f(x,y) - asin(kxy) - bcos(hy)]$$
+$$ \frac{\partial L}{\partial k} = -2 * axy * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
-$$ \frac{\partial L}{\partial \h} = -2 * by * [f(x,y) - asin(kxy) - bcos(hy)]$$
+$$ \frac{\partial L}{\partial h} = -2 * by * [f(x,y) - asin(kxy) - bcos(hy)]$$
