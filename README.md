@@ -5,7 +5,7 @@ For this demonstration, I want to showcase the superiority of ADAM when compared
 
 I want to optimize:
 
-$f(x,y) = asin(kxy) + bcos(hy)$
+$$f(x,y) = asin(kxy) + bcos(hy)$$
 
 Where my loss function is the Mean-Squared Error of the residuals:
 
