@@ -12,4 +12,4 @@ Where my loss function is the Mean-Squared Error of the residuals:
 $$L = \frac{1}{n} \sum_{i=1}^{n} (\hat{f}_i(x,y) - f_i(x,y))^2$$
 
 The gradient descent formula is:
-$$f(\theta)_i = f(\theta) _{i-1} - \alpha \nabla L(\theta)$$
+$$f(\theta)_{i+1} = f(\theta) _{i} - \alpha \nabla L(\theta) _{i}$$
