@@ -27,4 +27,4 @@ $$ \frac{\partial L}{\partial h} = -2 * by * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
 ADAM Optimization differs as two new hyperparameters are introduced, $\beta _1$ and $\beta _2$ which are the exponential decay rates for the moment estimates. These parameters are used to update the fist and second biased movement respectively. The algorithm for ADAM is:
 
-$$1: Solve: \nabla _\theta f_t (\theta _{t-1})$$
+$$1: Solve gradients: \nabla _\theta f_t (\theta _{t-1})$$
