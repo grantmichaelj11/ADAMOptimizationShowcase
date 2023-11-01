@@ -31,3 +31,5 @@ ADAM Optimization differs as two new hyperparameters are introduced, $\beta _1$ 
 2: Update biased first moment estimate $$m_t = \beta _1 * m _{t-1} + (1-\beta _1) * g_t$$
 3: Update biased second moment estimate $$v_t = \beta _2 * v _{t-1} + (1-\beta _2) * g_t^2$$
 4: Compute bias-corrected first moment estimate $$\hat{m}_t = m_t / (1- \beta _1 ^t)$$
+5: Compute bias-corrected second moment estimate $$\hat{v}_t = v_t / (1 - \beta _2 ^t) $$
+6: Update parameters $\theta_t = \theta _{t-1} - \alpha * \hat{m}_t / (\sqrt{\hat{v} _t} + \epsilon)$
