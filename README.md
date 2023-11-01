@@ -29,3 +29,4 @@ ADAM Optimization differs as two new hyperparameters are introduced, $\beta _1$ 
 
 1: Solve the gradients of the loss function $$g_t = \nabla _\theta f_t (\theta _{t-1})$$
 2: Update biased first moment estimate $$m_t = \beta _1 * m _{t-1} + (1-\beta _1) * g_t$$
+3: Update biased second moment estimate $$v_t = \beta _2 * v _{t-1} + (1-\beta _2) * g_t^2$$
