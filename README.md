@@ -34,3 +34,6 @@ ADAM Optimization differs as two new hyperparameters are introduced, $\beta _1$ 
 5: Compute bias-corrected second moment estimate $$\hat{v}_t = v_t / (1 - \beta _2 ^t) $$
 6: Update parameters $$\theta_t = \theta _{t-1} - \alpha * \hat{m}_t / (\sqrt{\hat{v} _t} + \epsilon)$$
 7: Update iteration step $$t = t+1$$
+8: Repeat until convergence or iteration count is met
+
+The code in this repository demonstrates how ADAM is able to optimize this test function faster, and demonstrates how its behavior differs drastically from gradient descent. For more information on ADAM Optimization, the interested reader is referred to: arXiv:1412.6980v9 
