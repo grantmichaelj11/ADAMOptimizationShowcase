@@ -13,9 +13,9 @@ $$L = \frac{1}{n} \sum_{i=1}^{n} (\hat{f}_i(x,y) - f_i(x,y))^2$$
 
 The gradient descent formula is:
 $$f(\theta)_{i+1} = f(\theta) _{i} - \alpha \nabla L(\theta) _{i}$$
-where $\alpha$ is our "training rate"
+where $\alpha$ is our "training rate" ensures too large of steps are not taken.
 
-For $f(x,y)$ the gradient for each parameter is defined:
+For $f(x,y)$ the gradient is defined defined:
 
 $$ \frac{\partial L}{\partial \alpha} = -2sin(kxy) * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
@@ -24,3 +24,5 @@ $$ \frac{\partial L}{\partial \beta} = -2cos(hy) * [f(x,y) - asin(kxy) - bcos(hy
 $$ \frac{\partial L}{\partial k} = -2 * axy * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
 $$ \frac{\partial L}{\partial h} = -2 * by * [f(x,y) - asin(kxy) - bcos(hy)]$$
+
+
