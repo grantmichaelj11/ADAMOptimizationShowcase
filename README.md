@@ -1,4 +1,4 @@
-# ADAMOptimizationShowcase
+# ADAM Optimization Showcase
 ADAM is an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. It is quite easy to implement, and while it comes at a slight increase in computational cost, it its extremely more efficent at optimization problems
 
 For this demonstration, I want to showcase the superiority of ADAM when compared to typical gradient descent.
