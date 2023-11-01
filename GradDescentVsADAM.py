@@ -178,9 +178,9 @@ ax.loglog(grad_iter, grad_error, label='Gradient Descent L=1e-2', color='b')
 ax.loglog(grad_iter2, grad_error2, label='Gradient Descent L=5e-3', color='b', linestyle='--')
 ax.loglog(grad_iter3, grad_error3, label='Gradient Descent L=1e-3', color='b', linestyle=':')
 
-ax.loglog(adam_iter, adam_error, label='ADAM L=1e-3', color=(0.5,0,0.5), linestyle='-')
+ax.loglog(adam_iter, adam_error, label='ADAM L=1e-2', color=(0.5,0,0.5), linestyle='-')
 ax.loglog(adam_iter2, adam_error2, label='ADAM L=5e-3', color=(0.5,0,0.5), linestyle='--')
-ax.loglog(adam_iter3, adam_error3, label='ADAM L=1e-4', color=(0.5,0,0.5), linestyle=':')
+ax.loglog(adam_iter3, adam_error3, label='ADAM L=1e-3', color=(0.5,0,0.5), linestyle=':')
 
 
 ax.set_xlabel('Iterations')
