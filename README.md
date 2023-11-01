@@ -25,4 +25,5 @@ $$ \frac{\partial L}{\partial k} = -2 * axy * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
 $$ \frac{\partial L}{\partial h} = -2 * by * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
+ADAM Optimization differs as two new hyperparameters are introduces, $\beta _1$ and $\beta _2$ which are the exponential decay rates for the moment estimates. 
 
