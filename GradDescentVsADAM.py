@@ -19,24 +19,24 @@ def func(x, y, k, h, a, b):
 ##################################### Define MSE Loss Function Gradients ######################################
 def dLa(fx, x, y, k, h, a, b):
     
-    return -2 * np.sin(k*x*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))
+    return -2 * np.sin(k*x*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))/len(x)
 
 def dLb(fx, x, y, k, h, a, b):
     
-    return -2 * np.cos(h*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))
+    return -2 * np.cos(h*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))/len(x)
 
 def dLk(fx, x, y, k, h, a, b):
     
-    return -2 * a * x * y * np.cos(k*x*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))
+    return -2 * a * x * y * np.cos(k*x*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))/len(x)
 
 def dLh(fx, x, y, k, h, a, b):
     
-    return 2 * b * y * np.sin(h*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))
+    return 2 * b * y * np.sin(h*y) * (fx - a*np.sin(k*x*y) - b*(np.cos(h*y)))/len(x)
 ##############################################################################################################
 
 
 ##################################### Optimization methods ####################################################
-def gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.000001, iterations=10000, tolerance=0.001):
+def gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.005, iterations=10000, tolerance=0.001):
     
     k0, h0, a0, b0 = initial_guesses['k0'], initial_guesses['h0'], initial_guesses['a0'], initial_guesses['b0']
     iteration = []
@@ -56,7 +56,7 @@ def gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.000001, iter
         
         fx_estimated = func(x, y, k, h, a, b)
         
-        error = np.sum(np.abs(fx_estimated - fx)) / np.abs(np.sum(fx))
+        error = np.sum(np.abs(fx_estimated - fx)**2)
         
         k0 = k
         h0 = h
@@ -115,7 +115,7 @@ def ADAM_optimization(fx, x, y, initial_guesses, beta1=0.9, beta2=0.9, loss=0.00
         
         fx_estimated = func(x, y, k, h, a, b)
         
-        error = np.sum(np.abs(fx_estimated - fx)) / np.abs(np.sum(fx))
+        error = np.sum(np.abs(fx_estimated - fx)**2)
         
         k0, h0, a0, b0 = k, h, a, b
         
@@ -161,35 +161,33 @@ initial_guesses = {'k0': 0.01,
 # 1) a tolerance is met 2) we run n iterations
 
 #Gradient Descent Samples
-k_estimated, h_estimated, a_estimated, b_estimated, grad_iter, grad_error = gradient_descent_optimizaiton(fx, x, y, initial_guesses)
-k_grad_loss2, h_grad_loss2, a_grad_loss2, b_grad_loss2, grad_iter2, grad_error2 = gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.000005)
-k_grad_loss3, h_grad_loss3, a_grad_loss3, b_grad_loss3, grad_iter3, grad_error3 = gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.00001)
-k_grad_loss4, h_grad_loss4, a_grad_loss4, b_grad_loss4, grad_iter4, grad_error4 = gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.000015)
+k_estimated, h_estimated, a_estimated, b_estimated, grad_iter, grad_error = gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.01)
+k_grad_loss2, h_grad_loss2, a_grad_loss2, b_grad_loss2, grad_iter2, grad_error2 = gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.005)
+k_grad_loss3, h_grad_loss3, a_grad_loss3, b_grad_loss3, grad_iter3, grad_error3 = gradient_descent_optimizaiton(fx, x, y, initial_guesses, loss=0.001)
 
 #ADAM Optimization Samples
-k_adam, h_adam, a_adam, b_adam, adam_iter, adam_error = ADAM_optimization(fx, x, y, initial_guesses, loss=0.001)
-k_adam2, h_adam2, a_adam2, b_adam2, adam_iter2, adam_error2 = ADAM_optimization(fx, x, y, initial_guesses)
-k_adam3, h_adam3, a_adam3, b_adam3, adam_iter3, adam_error3 = ADAM_optimization(fx, x, y, initial_guesses, loss=0.0001)
+k_adam, h_adam, a_adam, b_adam, adam_iter, adam_error = ADAM_optimization(fx, x, y, initial_guesses, loss=0.01)
+k_adam2, h_adam2, a_adam2, b_adam2, adam_iter2, adam_error2 = ADAM_optimization(fx, x, y, initial_guesses, loss = 0.005)
+k_adam3, h_adam3, a_adam3, b_adam3, adam_iter3, adam_error3 = ADAM_optimization(fx, x, y, initial_guesses, loss=0.001)
 
 
 #Graph error loss
 fig, ax = plt.subplots()
 
-ax.plot(grad_iter, grad_error, label='Gradient Descent L=1e-6', color='b', )
-ax.plot(grad_iter2, grad_error2, label='Gradient Descent L=5e-6', color='b', linestyle='--')
-ax.plot(grad_iter3, grad_error3, label='Gradient Descent L=1e-5', color='r', linestyle='-')
-ax.plot(grad_iter4, grad_error4, label='Gradient Descent L=1.5e-5', color='r', linestyle=':')
+ax.loglog(grad_iter, grad_error, label='Gradient Descent L=1e-2', color='b')
+ax.loglog(grad_iter2, grad_error2, label='Gradient Descent L=5e-3', color='b', linestyle='--')
+ax.loglog(grad_iter3, grad_error3, label='Gradient Descent L=1e-3', color='b', linestyle=':')
 
-ax.plot(adam_iter, adam_error, label='ADAM L=1e-3', color=(0.5,0,0.5), linestyle='-')
-ax.plot(adam_iter2, adam_error2, label='ADAM L=5e-3', color=(0.5,0,0.5), linestyle='--')
-ax.plot(adam_iter3, adam_error3, label='ADAM L=1e-4', color=(0.5,0,0.5), linestyle=':')
+ax.loglog(adam_iter, adam_error, label='ADAM L=1e-3', color=(0.5,0,0.5), linestyle='-')
+ax.loglog(adam_iter2, adam_error2, label='ADAM L=5e-3', color=(0.5,0,0.5), linestyle='--')
+ax.loglog(adam_iter3, adam_error3, label='ADAM L=1e-4', color=(0.5,0,0.5), linestyle=':')
 
 
 ax.set_xlabel('Iterations')
-ax.set_ylabel('Absolute Error')
+ax.set_ylabel('Loss Function')
 ax.set_title('Optimization of: f(x,y) = asin(kxy) + bcos(hy)')
 
-ax.legend()
+ax.legend(fontsize='small')
 
 plt.show()
 
