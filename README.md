@@ -5,4 +5,12 @@ ADAM is an algorithm for first-order gradient-based optimization of stochastic o
 
 For this demonstration, I want to showcase the superiority of ADAM when compared to typical gradient descent.
 
-I want to optimize, $f(x,y) = asin(kxy) + bcos(hy)$
+I want to optimize:
+
+$f(x,y) = asin(kxy) + bcos(hy)$
+
+Where my loss function is the Mean-Squared Error of the residuals:
+
+$L = \frac{1}{n}\sum_{i}^n (\hat{f(x,y)}_i - f(x,y))^2-i$
+
+
