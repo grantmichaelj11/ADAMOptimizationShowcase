@@ -11,6 +11,6 @@ $f(x,y) = asin(kxy) + bcos(hy)$
 
 Where my loss function is the Mean-Squared Error of the residuals:
 
-$L = \frac{1}{n} \sum_{i}^{n} (\hat{f}(x,y)}_i - f(x,y))^2$
+$L = \frac{1}{n} \sum_{i}^{n} (\hat{f}(x,y)_i - f(x,y))^2$
 
 
