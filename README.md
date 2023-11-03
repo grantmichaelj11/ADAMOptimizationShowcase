@@ -23,7 +23,7 @@ $$ \frac{\partial L}{\partial \beta} = \frac{-2}{n}cos(hy) * [f(x,y) - asin(kxy)
 
 $$ \frac{\partial L}{\partial k} = \frac{-2}{n} * axy * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
-$$ \frac{\partial L}{\partial h} = \frac{-2}{n} * by * [f(x,y) - asin(kxy) - bcos(hy)]$$
+$$ \frac{\partial L}{\partial h} = \frac{2}{n} * by * [f(x,y) - asin(kxy) - bcos(hy)]$$
 
 ADAM Optimization differs as two new hyperparameters are introduced, $\beta _1$ and $\beta _2$ which are the exponential decay rates for the moment estimates. These parameters are used to update the fist and second biased movement respectively. The algorithm for ADAM is:
 
